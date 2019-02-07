@@ -29,6 +29,14 @@ app.use((request, response, next) =>   // next to indicate when middleware compl
     next();   // move on from middleware
   });
 
+// served on whatever request
+app.use((request, response, next) =>
+  {
+    response.render('maintenance.hbs');
+
+    // NB no next, so no movement to other pages...
+  });
+
 
 hbs.registerHelper('getCurrentYear', () => {return new Date().getFullYear()});   // name, function
 hbs.registerHelper('tooLoud', (text) => {return text.toUpperCase();});
