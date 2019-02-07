@@ -10,6 +10,7 @@ app.set('view engine', 'hbs');   // use handlebars (template in views)
 // middleware (express)
 app.use(express.static(__dirname + '/public')); //__dirname :  directory from which Node command run
 
+hbs.registerHelper('getCurrentYear', () => {return new Date().getFullYear()});   // name, function
 
 // HTTP route handlers
 
@@ -28,7 +29,7 @@ app.get('/',(request, response) =>
   response.render('home.hbs',
   {
     pageTitle: 'Home Page',
-    currentYear: new Date().getFullYear(),
+    // currentYear: new Date().getFullYear(),
     welcomeMessage: 'Welcome to a web site using Node by PNJ'
   }   // render template setup with view view engine
 );
@@ -41,7 +42,7 @@ app.get('/about',(request, response) =>
   response.render('about.hbs',
   {
     pageTitle: 'About Page',
-    currentYear: new Date().getFullYear()
+    // currentYear: new Date().getFullYear()
   });   // render template setup with view view engine
 });
 
