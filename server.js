@@ -15,15 +15,23 @@ app.use(express.static(__dirname + '/public')); //__dirname :  directory from wh
 app.get('/',(request, response) =>
 {   // request and response
   // response.send('<h1>Hello from Express PNJ</h1>');
-  response.send(
+  // response.send(
+  // {
+  //   name: 'P.N.J.',
+  //   likes:
+  //   [
+  //     'reading',
+  //     'walking'
+  //   ]
+  // })
+  response.render('home.hbs',
   {
-    name: 'P.N.J.',
-    likes:
-    [
-      'reading',
-      'walking'
-    ]
-  })
+    pageTitle: 'About Page',
+    currentYear: new Date().getFullYear(),
+    welcomeMessage: 'Welcome to a web site using Node by PNJ'
+  }   // render template setup with view view engine
+);
+
 }); // url and function to run in this case/route
 
 app.get('/about',(request, response) =>
