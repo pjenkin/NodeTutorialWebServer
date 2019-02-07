@@ -11,6 +11,7 @@ app.set('view engine', 'hbs');   // use handlebars (template in views)
 app.use(express.static(__dirname + '/public')); //__dirname :  directory from which Node command run
 
 hbs.registerHelper('getCurrentYear', () => {return new Date().getFullYear()});   // name, function
+hbs.registerHelper('tooLoud', (text) => {return text.toUpperCase();});
 
 // HTTP route handlers
 
