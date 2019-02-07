@@ -2,6 +2,10 @@ const express = require('express');
 
 var app = express();    // call express to start with
 
+// middleware
+app.use(express.static(__dirname + '/public')); //__dirname :  directory from which Node command run
+
+
 // HTTP route handlers
 
 app.get('/',(request, response) =>
@@ -33,4 +37,7 @@ app.get('/bad', (request, response) =>
   );
 });
 
-app.listen(3000);   // listen on port 3000
+app.listen(3000, () =>
+{
+  console.log('Server is up, on port 3000');
+});   // listen on port 3000
