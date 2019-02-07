@@ -29,7 +29,11 @@ app.get('/',(request, response) =>
 app.get('/about',(request, response) =>
 {   // request and response);
   //response.send('<h2>\'About\' page</h2>');
-  response.render('about.hbs');   // render template setup with view view engine
+  response.render('about.hbs',
+  {
+    pageTitle: 'About Page',
+    currentYear: new Date().getFullYear()
+  });   // render template setup with view view engine
 });
 
 app.get('/bad', (request, response) =>
