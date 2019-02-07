@@ -6,7 +6,7 @@ var app = express();    // call express to start with
 
 app.get('/',(request, response) =>
 {   // request and response
-  response.send('Hello from Express PNJ');
+  response.send('<h1>Hello from Express PNJ</h1>');
 }); // url and function to run in this case/route
 
 app.listen(3000);   // listen on port 3000
