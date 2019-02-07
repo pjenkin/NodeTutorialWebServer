@@ -27,13 +27,13 @@ app.use((request, response, next) =>   // next to indicate when middleware compl
     next();   // move on from middleware
   });
 
-// served on whatever request
-app.use((request, response, next) =>
-  {
-    response.render('maintenance.hbs');
-
-    // NB no next, so no movement to other pages...
-  });
+// // served on whatever request
+// app.use((request, response, next) =>
+//   {
+//     response.render('maintenance.hbs');
+//
+//     // NB no next, so no movement to other pages...
+//   });
 
   // middleware (express)
   app.use(express.static(__dirname + '/public')); //__dirname :  directory from which Node command run
