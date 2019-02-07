@@ -10,6 +10,15 @@ app.set('view engine', 'hbs');   // use handlebars (template in views)
 // middleware (express)
 app.use(express.static(__dirname + '/public')); //__dirname :  directory from which Node command run
 
+app.use((request, response, next) =>   // next to indicate when middleware complete (must have next called within)
+  {
+    var now = new Date().toString();    // for timestamp
+
+    console.log(`${now} ${request.method} ${request.url}`);              // log request, from within middleware
+    next();   // move on from middleware
+  });
+
+
 hbs.registerHelper('getCurrentYear', () => {return new Date().getFullYear()});   // name, function
 hbs.registerHelper('tooLoud', (text) => {return text.toUpperCase();});
 
