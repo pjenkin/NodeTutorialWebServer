@@ -4,6 +4,7 @@ const hbs = require('hbs');
 var app = express();    // call express to start with
 
 // config (express)
+hbs.registerPartials(__dirname + '/views/partials');
 app.set('view engine', 'hbs');   // use handlebars (template in views)
 
 // middleware (express)
@@ -26,7 +27,7 @@ app.get('/',(request, response) =>
   // })
   response.render('home.hbs',
   {
-    pageTitle: 'About Page',
+    pageTitle: 'Home Page',
     currentYear: new Date().getFullYear(),
     welcomeMessage: 'Welcome to a web site using Node by PNJ'
   }   // render template setup with view view engine
