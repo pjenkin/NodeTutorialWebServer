@@ -8,8 +8,6 @@ var app = express();    // call express to start with
 hbs.registerPartials(__dirname + '/views/partials');
 app.set('view engine', 'hbs');   // use handlebars (template in views)
 
-// middleware (express)
-app.use(express.static(__dirname + '/public')); //__dirname :  directory from which Node command run
 
 app.use((request, response, next) =>   // next to indicate when middleware complete (must have next called within)
   {
@@ -36,6 +34,9 @@ app.use((request, response, next) =>
 
     // NB no next, so no movement to other pages...
   });
+
+  // middleware (express)
+  app.use(express.static(__dirname + '/public')); //__dirname :  directory from which Node command run
 
 
 hbs.registerHelper('getCurrentYear', () => {return new Date().getFullYear()});   // name, function
