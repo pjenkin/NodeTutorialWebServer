@@ -1,5 +1,6 @@
 const express = require('express');
 const hbs = require('hbs');
+const fs = require('fs');
 
 var app = express();    // call express to start with
 
@@ -14,7 +15,17 @@ app.use((request, response, next) =>   // next to indicate when middleware compl
   {
     var now = new Date().toString();    // for timestamp
 
-    console.log(`${now} ${request.method} ${request.url}`);              // log request, from within middleware
+    // console.log(`${now} ${request.method} ${request.url}`);              // log request, from within middleware
+    var log = `${now} ${request.method} ${request.url}`;              // log request, from within middleware
+    console.log(log);
+    // write to disk
+    fs.appendFile('server.log', log + '\n', (error) =>
+    {
+      if (error)    // only if error exists/occurred, write message
+      {
+        console.log('Error - Unable to append to server.log');
+      }
+    });
     next();   // move on from middleware
   });
 
