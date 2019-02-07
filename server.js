@@ -1,8 +1,12 @@
 const express = require('express');
+const hbs = require('hbs');
 
 var app = express();    // call express to start with
 
-// middleware
+// config (express)
+app.set('view engine', 'hbs');   // use handlebars (template in views)
+
+// middleware (express)
 app.use(express.static(__dirname + '/public')); //__dirname :  directory from which Node command run
 
 
@@ -24,7 +28,8 @@ app.get('/',(request, response) =>
 
 app.get('/about',(request, response) =>
 {   // request and response);
-  response.send('<h2>\'About\' page</h2>');
+  //response.send('<h2>\'About\' page</h2>');
+  response.render('about.hbs');   // render template setup with view view engine
 });
 
 app.get('/bad', (request, response) =>
