@@ -78,6 +78,16 @@ app.get('/about',(request, response) =>
   });   // render template setup with view view engine
 });
 
+app.get('/projects',(request, response) =>
+{   // request and response);
+  //response.send('<h2>\'About\' page</h2>');
+  response.render('projects.hbs',
+  {
+    pageTitle: 'About Page',
+    // currentYear: new Date().getFullYear()
+  });   // render template setup with view view engine
+});
+
 app.get('/bad', (request, response) =>
 {
   // response.send('Error occurred - unable to handle request');
